@@ -1,0 +1,209 @@
+/* =================================================================
+   VARIABLES CSS PARA GESTIÓN DE TEMAS (MODO OSCURO Y CLARO)
+   ================================================================= */
+
+/* :root define las variables para el tema oscuro por defecto.
+   Estas variables nos permiten cambiar colores en toda la web 
+   modificando un solo valor. */
+:root {
+    --bg-color: #121212; /* Fondo principal oscuro */
+    --text-color: #ffffff; /* Texto principal blanco */
+    --primary-color: #ffea00; /* Color de acento (rojo) */
+    --card-bg: #1e1e1e; /* Fondo de las tarjetas */
+    --navbar-bg: rgba(18, 18, 18, 0.8); /* Fondo del navbar con transparencia */
+    --footer-bg: #1e1e1e; /* Fondo del pie de página */
+    --input-bg: #2a2a2a; /* Fondo de los campos de formulario */
+    --luminous-shadow: 0 0 15px rgba(255, 0, 0, 0.7); /* Sombra luminosa roja */
+    --subtle-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil para tarjetas */
+}
+
+/* [data-theme="light"] define las variables para el tema claro.
+   Cuando el body tenga este atributo, se aplicarán estos colores. */
+[data-theme="light"] {
+    --bg-color: #f9f9f9; /* Fondo principal claro */
+    --text-color: #000000; /* Texto principal negro */
+    --primary-color: #ffee00; /* Color de acento (rojo) */
+    --card-bg: #ff0000; /* Fondo blanco para las tarjetas */
+    --navbar-bg: rgba(249, 249, 249, 0.8); /* Fondo del navbar claro con transparencia */
+    --footer-bg: #e9e9e9; /* Fondo claro para el pie de página */
+    --input-bg: #f0f0f0; /* Fondo claro para formularios */
+    --luminous-shadow: 0 0 10px rgba(255, 0, 0, 0.4); /* Sombra roja más sutil */
+    --subtle-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra muy ligera */
+}
+
+/* =================================================================
+   ESTILOS GENERALES Y TRANSICIONES
+   ================================================================= */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* La propiedad 'transition' hace que el cambio de colores sea suave y no brusco */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.section-title {
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* =================================================================
+   1. NAVBAR
+   ================================================================= */
+.navbar {
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo del navbar */
+    border-bottom: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: var(--text-color) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Estilo para el botón de tema */
+#theme-toggle {
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+#theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* =================================================================
+   2. PERFIL
+   ================================================================= */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Imagen circular */
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--luminous-shadow);
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.bio {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1.1rem;
+}
+
+/* Animación de latido de corazón */
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+@keyframes heartbeat {
+    from { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    to { transform: scale(1); }
+}
+
+/* =================================================================
+   3, 5, 6. TARJETAS (EXPERIENCIA, PROYECTOS, VIDEOS)
+   ================================================================= */
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: var(--subtle-shadow);
+    height: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.animated-card:hover {
+    transform: translateY(-10px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: var(--luminous-shadow);
+}
+
+.card .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    width: 50%;
+}
+
+/* Estilo para imágenes dentro de las tarjetas de proyectos */
+.card img {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+
+/* =================================================================
+   4. TECNOLOGÍAS
+   ================================================================= */
+.tech-icons i {
+    font-size: 4rem;
+    margin: 0 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.tech-icons i:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
+}
+
+/* Colores específicos para cada icono */
+.fa-html5 { color: #E34F26; }
+.fa-css3-alt { color: #1572B6; }
+.fa-js-square { color: #F7DF1E; }
+.fa-bootstrap { color: #7952B3; }
+
+
+/* =================================================================
+   7. FORMULARIO DE CONTACTO
+   ================================================================= */
+.form-control {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.form-control:focus {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    box-shadow: var(--luminous-shadow);
+}
+.form-control::placeholder {
+    color: #a0a0a0;
+}
+
+/* =================================================================
+   8. FOOTER
+   ================================================================= */
+.footer {
+    background-color: var(--footer-bg);
+    padding: 20px 0;
+    margin-top: 50px;
+    border-top: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
